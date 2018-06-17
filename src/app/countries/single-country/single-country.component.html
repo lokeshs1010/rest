@@ -1,0 +1,74 @@
+<div class="container-fluid margin head" *ngIf="singleCountry">
+  <div class="row ">
+    <div *ngFor="let info of singleCountry" class="col-12 back"
+      [ngStyle]="{ 'background-image': 'linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(' + info.flag + ')'}">
+      <div class="col col-sm-12 col-md-12  text-center" style="color: lightblue; size:10em ">
+        <h2 style="margin: 10px 5px;" >
+          <b> {{ info.name }} </b>
+        </h2>
+        <hr style=" border-top: 1px solid white; margin-top: 5px;">
+        <hr>
+      </div>
+      <div class="col-12">
+        <div class="col-12"  >
+          <b>CAPITAL : </b>{{info.capital}}</div>
+        <div class="col-12" >
+          <b>NATIVE NAME : </b>{{info.nativeName}}</div>
+        <div class="col-12" >
+          <b>SUBREGION : </b>{{info.subregion}}</div>
+        <div class="col-12" >
+          <b>ALPHA2CODE : </b>{{info.alpha2Code}}</div>
+        <div class="col-12" >
+          <b>ALPHA3CODE: </b>{{info.alpha3Code}}</div>
+        <div class="col-12" >
+          <b>REGION : </b>{{info.region}}</div>
+        <div class="col-12" >
+          <b>POPULATION : </b>{{info.population}}</div>
+        <div class="col-12" >
+          <b>DEMONYM : </b>{{info.demonym}}</div>
+        <div class="col-12" >
+          <b>AREA : </b>{{info.area}}</div>
+          <hr>
+          <div class="col-12">
+            <h3>LANGUAGE</h3>
+            <hr style=" border-top: 1px solid white; margin-top: 5px;">
+          </div>
+          <span *ngFor="let lang of info.languages; let first=first; let last = last">
+            <a [routerLink]="['/regions/' + info.region]" [queryParams]="{ 'language' : lang.iso639_1, 'name' : lang.name}">{{lang.name}}{{last?'':','}}</a>
+            <br>
+          </span>
+          <hr>
+          <div class="col-12">
+            <h3>CURRENCY</h3>
+            <hr style=" border-top: 1px solid white; margin-top: 5px;">
+          </div>
+          <span *ngFor="let currency of info.currencies; let i = last">
+            <a [routerLink]="['/regions/' + info.name]" [queryParams]="{ 'currency' : currency.code, 'name' : currency.name}">{{ currency.symbol }} {{currency.name}} </a>{{i ? "" : ","}}
+          </span>
+          <hr>
+          <div class="col-12">
+            <h3>TIME ZONES</h3>
+            <hr style=" border-top: 1px solid white; margin-top: 5px;">
+          </div>
+          <span class="col-12 col-sm-6 col-md-4" *ngFor="let time of info.timezones">{{time}}<br></span>
+          <hr>
+          <div class="col-12">
+            <h3>ACRONYM</h3>
+            <hr style=" border-top: 1px solid white; margin-top: 5px;">
+          </div>
+          <span class="col-12 col-sm-6 col-md-4" *ngFor="let a of info.regionalBlocs">{{a.acronym}}</span>
+          <hr>
+          <div class="col-12">
+            <h3>BORDERS</h3>
+            <hr style=" border-top: 1px solid white; margin-top: 5px;">
+          </div>
+          <span class="col-12 col-sm-6 col-md-4" *ngFor="let bord of info.borders">{{bord}}<br></span>
+          <hr>
+          </div>
+      <br>
+      <br>
+    </div>
+
+
+  </div>
+</div>

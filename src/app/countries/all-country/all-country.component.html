@@ -1,0 +1,49 @@
+<div class="container-fluid" style="text-align:center">
+  <div class="row">
+    <div class="col-12">
+      <form #myForm="ngForm">
+        <div class="form-group" >
+          <label id="label-set">Filter by Name:</label>
+          <input type="text" name="textVal" [(ngModel)]='search' class="form-control">
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="row d-flex justify-content-between">
+    <div *ngFor="let region of regions|sorting:search" class="col-lg-3 col-md-4 col-sm-12 mr-2 pad">
+      <div class="card" >
+        <img class="card-img-top img-fluid size " src="{{ region.flag }}" alt="">
+        <div class="card-body mx-auto">
+          <h5 class="card-title">{{region.name}}</h5>
+          <hr>
+          <p class="card-text"><strong>CAPITAL : </strong>{{region.capital}}</p>
+          <hr>
+          <p class="card-text"><strong>SUBREGION : </strong>{{region.subregion}}</p>
+          <hr>
+          <p class="card-text"><strong>TIMEZONE : </strong>
+            <span *ngFor="let time of region.timezones; let first=first; let last = last">
+              {{time}}{{last?'':','}}
+            </span></p>
+          <hr>
+          <p><strong>CURRENCY : </strong>
+            <span *ngFor="let currency of region.currencies; let i = last">
+              <a [routerLink]="['/regions/' + region.name]" [queryParams]="{ 'currency' : currency.code, 'name' : currency.name}">{{ currency.symbol }} {{currency.name}} </a>{{i ? "" : ","}} </span>
+          </p>
+          <hr>
+          <p><strong>LANGUAGE : </strong>
+            <span *ngFor="let lang of region.languages; let first=first; let last = last">
+              <a [routerLink]="['/regions/' + region.region]" [queryParams]="{ 'language' : lang.iso639_1, 'name' : lang.name}">{{lang.name}}{{last?'':','}}</a>
+              <br>
+            </span>
+          </p>
+          <hr>
+          <a [routerLink]="['/country',region.name]" class="btn btn-primary btn-block">Visit Country</a>
+        </div>
+      </div>
+      <br>
+      <br>
+    </div>
+
+  </div>
+
+</div>

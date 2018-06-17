@@ -1,0 +1,23 @@
+.size {
+    height: 12rem;
+    object-fit: cover;
+}
+.row {
+  display: flex;
+  justify-content: center;
+}
+@media (min-width:1000px) {
+  .size {
+    height: 300px;
+  }
+}
+@media (min-width:700px) and (max-width : 1000px) {
+  .size {
+    height: 235px;
+  }
+}
+@media (max-width:700px) {
+  .size {
+    height: 172px;
+  }
+}

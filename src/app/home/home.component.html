@@ -1,0 +1,14 @@
+<div class="container" *ngFor="let region of regions">
+    <div class="row mt-5">
+        <div class="col-12 back"  [ngStyle]="{ 'background-image': 'url(assets/' + region + '.jpg)'}">
+            <div class="row mt-5">
+                <div class="col-8 mx-auto" >
+                    <h1 class="text-center head"><b>{{ region }}</b></h1>
+                      <a class="btn btn-primary d-block" [routerLink]="['/regions',region]" style="margin-top: 14rem">
+                        <h5>View More</h5>
+                      </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

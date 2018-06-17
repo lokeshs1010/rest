@@ -1,0 +1,15 @@
+.back {
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  min-height: 50vh;
+}
+
+.bottom {
+  display: flex;
+  align-items: flex-end;
+}
+
+.head {
+  color: white;
+  font-size: 3rem;
+}
